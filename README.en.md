@@ -6,6 +6,14 @@ A lightweight platform for observing how coding agents talk to model APIs: run r
 
 ![screenshot](docs/screenshot.png)
 
+## Motivation
+
+In post-training, you need to see exactly what an agent sends to the model API and what the model returns: how the tools list is composed, which beta headers are negotiated, what changes in the request when a feature flag is enabled, whether the upstream proxy rewrites fields. None of this is visible from the agent's own logs or abstraction layers — only from raw wire traffic.
+
+General-purpose packet capture tools don't understand agent semantics; traffic can't be organized by task, and there's no comparison across runs or configurations.
+
+Petri starts with observation: coding agents run real tasks through a capture proxy, raw traffic is preserved in full, and everything is organized, inspected, and compared per run.
+
 ## Features
 
 - Multiple agents: codex, claude code, pi, opencode, omp; local or docker execution

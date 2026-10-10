@@ -6,6 +6,14 @@
 
 ![screenshot](docs/screenshot.png)
 
+## 动机
+
+Post-train 阶段需要精确观察 agent 发给模型 API 的请求和模型返回的响应：tools 列表如何构成、beta header 如何协商、feature flag 开启后报文发生了什么变化、上游代理是否改写了字段。这些信息无法从 agent 自身的日志或抽象层获得，只能通过 wire-level 的原始报文确认。
+
+通用抓包工具不了解 agent 语义，报文无法按任务组织，也不支持跨运行、跨配置的对比。
+
+Petri 从观测这一件事切入：让 coding agent 通过抓包代理执行真实任务，完整保留原始流量，以 run 为单位组织、检查与对比。
+
 ## 功能
 
 - 多家 agent:codex、claude code、pi、opencode、omp;local / docker 执行
