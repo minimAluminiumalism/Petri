@@ -4,6 +4,8 @@
 
 A lightweight platform for observing how coding agents talk to model APIs: run real agent tasks through a capture proxy, keep the full raw request/response traffic (headers and streaming events included), and compare across agents, versions, models, and feature flags.
 
+![screenshot](docs/screenshot.png)
+
 ## Features
 
 - Multiple agents: codex, claude code, pi, opencode, omp; local or docker execution

@@ -4,6 +4,8 @@
 
 观测 coding agent 与模型 API 之间流量的轻量平台：让真实的 agent 任务经由抓包代理执行，完整保留原始请求/响应（含 headers 与流式事件），支持跨 agent、版本、模型、feature flag 的对比。
 
+![screenshot](docs/screenshot.png)
+
 ## 功能
 
 - 多家 agent:codex、claude code、pi、opencode、omp;local / docker 执行
