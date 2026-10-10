@@ -1,32 +1,31 @@
-# React + TypeScript + Vite
+# Petri
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+[English](README.en.md)
 
-Currently, two official plugins are available:
+观测 coding agent 与模型 API 之间流量的轻量平台：让真实的 agent 任务经由抓包代理执行，完整保留原始请求/响应（含 headers 与流式事件），支持跨 agent、版本、模型、feature flag 的对比。
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 功能
 
-## React Compiler
+- 多家 agent:codex、claude code、pi、opencode、omp;local / docker 执行
+- 抓包代理转发任意 OpenAI / Anthropic 兼容上游，原始报文完整留档
+- 请求详情：JSON / Rendered / Events / Raw / Headers 五种视图
+- 观测 agent feature flag 在 wire 上的实际差异，run 之间并排对比
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 使用
 
-## Expanding the Oxlint configuration
-
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
-
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+```bash
+npm install
+npm run server   # 后端 :8787
+npm run dev      # 前端 :5199
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+## 数据位置
+
+| 路径 | 内容 |
+|---|---|
+| `~/.petri/agents/<agent>/<version>` | agent 安装缓存 |
+| `~/.petri/runs/<run-id>/` | run 运行时状态（隔离 home) |
+| `~/.petri/bodies/<run-id>/` | 抓包请求/响应体 |
+| `~/.petri/petri.db` | run / 请求 / 模型配置元数据 |
+
+
